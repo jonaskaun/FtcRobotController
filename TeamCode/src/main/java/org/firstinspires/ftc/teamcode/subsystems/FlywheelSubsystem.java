@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 public class FlywheelSubsystem {
     DcMotorEx flywheel;
     public FlywheelSubsystem(HardwareMap hardwareMap){
-        flywheel = hardwareMap.get(DcMotorEx.class,"leftFlywheel");
+        flywheel = hardwareMap.get(DcMotorEx.class,"rightFlywheel");
     }
 
     /**

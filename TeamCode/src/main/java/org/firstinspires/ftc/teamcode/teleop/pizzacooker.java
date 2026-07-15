@@ -53,6 +53,7 @@ public class pizzacooker extends OpMode {
     @Override
     public void loop(){
       telemetry.update();
+      telemetry.addData(flywheelSub.getSpeedRPM());
        /* switch(spindexerState){
             case START:
                 intakeSub.setPower(0.5);
@@ -94,6 +95,7 @@ public class pizzacooker extends OpMode {
                     flywheelSub.setRPM(1000);
                     timer.reset();
                     telemetry.speak("low and slow");
+
                 }
 
                 break;
