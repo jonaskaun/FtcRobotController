@@ -1,16 +1,12 @@
-package org.firstinspires.ftc.teamcode.Sensors;
+package org.firstinspires.ftc.teamcode.util;
 
-import com.acmerobotics.dashboard.config.Config;
-import com.bylazar.configurables.annotations.Configurable;
+
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
-import org.firstinspires.ftc.teamcode.Subsystems.MecanumDrivetrain;
-import org.firstinspires.ftc.teamcode.Utilities.PDFL;
-import org.firstinspires.ftc.teamcode.Utilities.Vector2d;
-@Configurable
+
 public class OdoPods {
     private GoBildaPinpointDriver pinpoint;
 

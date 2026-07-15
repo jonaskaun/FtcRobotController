@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Sensors;
+package org.firstinspires.ftc.teamcode.util;
 
 import static com.qualcomm.robotcore.util.TypeConversion.byteArrayToInt;
 

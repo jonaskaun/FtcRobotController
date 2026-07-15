@@ -1,39 +1,38 @@
-package org.firstinspires.ftc.teamcode.Subsystems;
+package org.firstinspires.ftc.teamcode.util;
 
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.teamcode.Configs.Config;
+import org.firstinspires.ftc.teamcode.subsystems.NamingConfig;
+
 
 public class MecanumDrivetrain {
     public DcMotor backLeft;
     public DcMotor frontLeft;
     public DcMotor backRight;
     public DcMotor frontRight;
-    private Config config;
     private double max;
     private double max_Speed;
     public MecanumDrivetrain(double Max_Speed, HardwareMap hardwareMap){
-        config = new Config();
         //back left
-        backLeft = hardwareMap.get(DcMotor.class, config.backLeft);
+        backLeft = hardwareMap.get(DcMotor.class, NamingConfig.leftRearDrive);
         backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         backLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         //front left
-        frontLeft = hardwareMap.get(DcMotor.class, config.frontLeft);
+        frontLeft = hardwareMap.get(DcMotor.class, NamingConfig.leftFrontDrive);
         frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         frontLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         frontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         //back right
-        backRight = hardwareMap.get(DcMotor.class, config.backRight);
+        backRight = hardwareMap.get(DcMotor.class, NamingConfig.rightRearDrive);
         backRight.setDirection(DcMotorSimple.Direction.FORWARD);
         backRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         //front right
-        frontRight = hardwareMap.get(DcMotor.class, config.frontRight);
+        frontRight = hardwareMap.get(DcMotor.class, NamingConfig.rightFrontDrive);
         frontRight.setDirection(DcMotorSimple.Direction.FORWARD);
         frontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         frontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
