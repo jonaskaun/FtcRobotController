@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.subsystems;
 
+import static org.firstinspires.ftc.teamcode.subsystems.NamingConfig.flywheelTicksPerRotation;
+
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -14,8 +16,11 @@ public class FlywheelSubsystem {
      * converts rpm to tps, and sets velocity for flywheel
      * @param rpm input in rpm,
      */
-    public void setRpm(double rpm){
-        flywheel.setVelocity((rpm/60)*28);
+    public void setRPM(double rpm){
+        flywheel.setVelocity((rpm/60)*flywheelTicksPerRotation);
+    }
+    public void stop(){
+        flywheel.setVelocity(0);
     }
 
     /**
@@ -23,7 +28,7 @@ public class FlywheelSubsystem {
      * @return
      */
     public double getSpeedRPM(){
-        return ((flywheel.getVelocity())/28)*60;
+        return ((flywheel.getVelocity())/flywheelTicksPerRotation)*60;
     }
 
     /**
@@ -32,7 +37,7 @@ public class FlywheelSubsystem {
      * @return  the conversion in RPM
      */
     public double convertToRPM(double TPS){
-        return TPS/60*28;
+        return TPS/60*flywheelTicksPerRotation;
     }
 
     /**
@@ -41,7 +46,7 @@ public class FlywheelSubsystem {
      * @return  the conversion in TPS
      */
     public double convertToTPS(double RPM){
-        return RPM*60/28;
+        return RPM*60/flywheelTicksPerRotation;
     }
 
 

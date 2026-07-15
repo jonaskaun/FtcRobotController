@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import org.firstinspires.ftc.teamcode.subsystems.FlywheelSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.IntakeSubsystem;
 
 @TeleOp (name = "goofy silly")
@@ -25,8 +26,19 @@ public class pizzacooker extends OpMode {
 
 
     }
+    // 500, 1000, 1500
+    public enum flywheelActions{
+        OFF,
+        LOW,
+        MED,
+        HIGH
+    }
     public intakeActions spindexerState = intakeActions.START;
+    public flywheelActions flywheelState = flywheelActions.OFF;
     public IntakeSubsystem intakeSub;
+    public FlywheelSubsystem flywheelSub;
+
+    double stateChangeTime = 5.0;
 
 
     @Override
@@ -34,13 +46,14 @@ public class pizzacooker extends OpMode {
         timer = new ElapsedTime();
         //sensyBoi = hardwareMap.get(RevColorSensorV3.class,"RevColorSensorV3");
         intakeSub = new IntakeSubsystem(hardwareMap);
+        flywheelSub = new FlywheelSubsystem(hardwareMap);
 
 
     }
     @Override
     public void loop(){
       telemetry.update();
-        switch(spindexerState){
+       /* switch(spindexerState){
             case START:
                 intakeSub.setPower(0.5);
                 spindexerState = intakeActions.SPINNING;
@@ -69,9 +82,39 @@ public class pizzacooker extends OpMode {
                 }
                 break;
 
+        }*/
+        switch (flywheelState){
+            case OFF:
+                flywheelState = flywheelActions.LOW;
+                flywheelSub.setRPM(500);
+                break;
+            case LOW:
+                if (timer.seconds()>=stateChangeTime){
+                    flywheelState = flywheelActions.MED;
+                    flywheelSub.setRPM(1000);
+                    timer.reset();
+                    telemetry.speak("low and slow");
+                }
+
+                break;
+            case MED:
+                if(timer.seconds()>=stateChangeTime){
+                    flywheelState = flywheelActions.HIGH;
+                    flywheelSub.setRPM(1500);
+                    timer.reset();
+                    telemetry.speak("medium........ toong toong toong sahoor");
+                }
 
 
+                break;
+            case HIGH:
+                if(timer.seconds()>=stateChangeTime){
+                    flywheelState = flywheelActions.OFF;
+                    flywheelSub.stop();
+                    telemetry.speak("fast and furious");
+                }
 
+                break;
 
         }
 
