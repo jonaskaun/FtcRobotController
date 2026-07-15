@@ -11,8 +11,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.subsystems.IntakeSubsystem;
 
 @TeleOp (name = "goofy silly")
-
-
 public class pizzacooker extends OpMode {
 
     ElapsedTime timer;
@@ -34,14 +32,14 @@ public class pizzacooker extends OpMode {
     @Override
     public void init(){
         timer = new ElapsedTime();
-        sensyBoi = hardwareMap.get(RevColorSensorV3.class,"RevColorSensorV3");
+        //sensyBoi = hardwareMap.get(RevColorSensorV3.class,"RevColorSensorV3");
         intakeSub = new IntakeSubsystem(hardwareMap);
 
 
     }
     @Override
     public void loop(){
-
+      telemetry.update();
         switch(spindexerState){
             case START:
                 intakeSub.setPower(0.5);
@@ -60,7 +58,10 @@ public class pizzacooker extends OpMode {
                 break;
 
             case DIALOGUE:
-                telemetry.speak("tung tung tung tung tung tung sahur");
+                telemetry.addData("toong toong toong sahoor", "");
+
+                telemetry.update();
+
                 break;
             case COLOR :
                 if(sensyBoi.getDistance(DistanceUnit.MM)<5){
