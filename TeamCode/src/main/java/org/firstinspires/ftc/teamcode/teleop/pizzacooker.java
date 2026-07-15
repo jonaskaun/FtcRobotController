@@ -86,35 +86,32 @@ public class pizzacooker extends OpMode {
         }*/
         switch (flywheelState){
             case OFF:
-
-                if(timer.seconds() >= stateChangeTime) {
-                    flywheelState = flywheelActions.LOW;
+                if(timer.seconds() >= stateChangeTime){
+                flywheelState = flywheelActions.LOW;
+                flywheelSub.setRPM(500);
+                telemetry.speak("low and slow");
                 }
                 break;
             case LOW:
-                telemetry.speak("low and slow");
-                flywheelSub.setRPM(500);
                 if (timer.seconds()>=stateChangeTime){
                     flywheelState = flywheelActions.MED;
-
+                    flywheelSub.setRPM(1000);
+                    timer.reset();
+                    telemetry.speak("medium........ toong toong toong sahoor");
                 }
 
                 break;
             case MED:
-                flywheelSub.setRPM(1000);
-                timer.reset();
-                telemetry.speak("medium........ toong toong toong sahoor");
                 if(timer.seconds()>=stateChangeTime){
                     flywheelState = flywheelActions.HIGH;
-
+                    flywheelSub.setRPM(1500);
+                    timer.reset();
+                    telemetry.speak("fast and furious");
                 }
 
 
                 break;
             case HIGH:
-                flywheelSub.setRPM(1500);
-                timer.reset();
-                telemetry.speak("fast and furious");
                 if(timer.seconds()>=stateChangeTime){
                     flywheelSub.stop();
                 }
