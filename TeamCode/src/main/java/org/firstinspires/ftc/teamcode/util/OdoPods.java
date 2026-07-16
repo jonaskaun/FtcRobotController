@@ -1,12 +1,13 @@
 package org.firstinspires.ftc.teamcode.util;
 
 
+import com.bylazar.configurables.annotations.Configurable;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
-
+@Configurable
 public class OdoPods {
     private GoBildaPinpointDriver pinpoint;
 
@@ -21,19 +22,19 @@ public class OdoPods {
 
     // Drivetrain reference for setting motor powers
     private MecanumDrivetrain drivetrain;
-    public static double kph = -0.048;
-    public static double kdh = 0.01;
-    public static double kfh = 0.025;
-    public static double klh = 0.033;
+    public static double kph = -0.009;
+    public static double kdh = 0;
+    public static double kfh = 0.03;
+    public static double klh = 0;
 
-    public static double kpd = 0.031;
-    public static double kdd = 0;
-    public static double kfd = 0.04;
-    public static double kld = 0.07;
+    public static double kpd = 0.05;
+    public static double kdd = 0.01;
+    public static double kfd = 0.01;
+    public static double kld = 0;
 
-    public static double kps = 0.059;
+    public static double kps = 0.039;
     public static double kds = 0;
-    public static double kfs = 0.03;
+    public static double kfs = 0.02;
     public static double kls = 0;
 
     /*public static double kph = -0.015;
@@ -43,7 +44,7 @@ public class OdoPods {
 
     public static double kpd = -0.05;
     public static double kdd = -0.05;
-    public static double kfd = -0.05;
+    publiadbc static double kfd = -0.05;
     public static double kld = 0;
 
     public static double kps = -0.07;
